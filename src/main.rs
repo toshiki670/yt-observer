@@ -1,4 +1,5 @@
 mod app;
+mod page;
 mod route;
 
 use app::App;

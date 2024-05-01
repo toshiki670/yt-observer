@@ -6,7 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [dependencies]
 yew = { version = "0.21", features = ["csr"] }
-yew-router = "0.18.0"
+yew-nested-router = "0.7.0"
 wasm-bindgen = "0.2"
 wasm-bindgen-futures = "0.4"
 web-sys = "0.3"
@@ -20,7 +20,8 @@ console_error_panic_hook = "0.1.7"
 # [docs.rs](https://docs.rs/patternfly-yew/0.5.6/patternfly_yew/)
 # [github.com](https://github.com/patternfly-yew/patternfly-yew)
 # [Sample](https://patternfly-yew.github.io/patternfly-yew-quickstart/)
-patternfly-yew = "0.5.6"
+# [Code of Sample](https://github.com/patternfly-yew/patternfly-yew-quickstart/)
+patternfly-yew = { version = "0.6.0", features = ["tree", "icons-fab"] }
 
 [workspace]
 members = ["src-tauri"]

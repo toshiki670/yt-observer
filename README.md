@@ -14,3 +14,7 @@ Your system is missing dependencies (or they do not exist in $PATH):
   yarn
   yarn tauri dev
 ```
+
+### Setup VS code
+
+[【TypeScript】yarn4 + VSCode で ts2307 が一生出続ける問題の解消法](https://qiita.com/Enokisan/items/8007c6a943058bcf7073)

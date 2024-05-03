@@ -18,3 +18,8 @@ Your system is missing dependencies (or they do not exist in $PATH):
 ### Setup VS code
 
 [【TypeScript】yarn4 + VSCode で ts2307 が一生出続ける問題の解消法](https://qiita.com/Enokisan/items/8007c6a943058bcf7073)
+* `yarn dlx @yarnpkg/sdks vscode`
+* Open VS code command with `Command + Shift + P`
+  * Select `Typescript: Select TypeScript Version...`
+    * Use workspace version
+

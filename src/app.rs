@@ -1,7 +1,7 @@
 use iced::{
     executor, mouse,
-    widget::{canvas, column, container, row, scrollable},
-    Alignment, Application, Command, Element, Length, Point, Rectangle, Renderer, Theme,
+    widget::{canvas, column, container, horizontal_space, pick_list, row, scrollable, text},
+    Alignment, Application, Command, Element, Font, Length, Point, Rectangle, Renderer, Theme,
 };
 
 #[derive(Default, Debug)]
@@ -23,12 +23,17 @@ impl Application for App {
 
     type Flags = ();
 
-    fn new(flags: Self::Flags) -> (Self, iced::Command<Self::Message>) {
-        (Self::default(), Command::none())
+    fn new(_flags: Self::Flags) -> (Self, iced::Command<Self::Message>) {
+        let app = Self { theme: Theme::Dark };
+        (app, Command::none())
     }
 
     fn title(&self) -> String {
         String::from("Youtube observer")
+    }
+
+    fn theme(&self) -> Self::Theme {
+        self.theme.clone()
     }
 
     fn update(&mut self, message: Self::Message) -> iced::Command<Self::Message> {
@@ -41,6 +46,21 @@ impl Application for App {
     }
 
     fn view(&self) -> iced::Element<'_, Self::Message, Self::Theme, iced::Renderer> {
+        let header = container(
+            row![
+                text("Youtube Observer").size(20).font(Font::MONOSPACE),
+                horizontal_space(),
+                pick_list(Theme::ALL, Some(&self.theme), Message::ThemeSelected),
+            ]
+            .spacing(20)
+            .align_items(Alignment::Center),
+        )
+        .style(|theme: &Theme| {
+            let palette = theme.extended_palette();
+
+            container::Appearance::default().with_border(palette.background.strong.color, 1)
+        });
+
         let sidebar = container(
             column!["Sidebar!", square(50), square(50)]
                 .spacing(40)
@@ -61,7 +81,7 @@ impl Application for App {
         )
         .padding(10);
 
-        row![sidebar, content].into()
+        column![header, row![sidebar, content]].into()
     }
 }
 

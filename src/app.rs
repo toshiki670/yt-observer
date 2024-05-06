@@ -1,5 +1,5 @@
 use iced::{
-    executor, mouse,
+    executor, mouse, theme,
     widget::{canvas, column, container, horizontal_space, pick_list, row, scrollable, text},
     Alignment, Application, Command, Element, Font, Length, Point, Rectangle, Renderer, Theme,
 };
@@ -68,6 +68,8 @@ impl Application for App {
                 .width(200)
                 .align_items(Alignment::Center),
         )
+        .style(theme::Container::Box)
+        .height(Length::Fill)
         .center_y();
 
         let content = container(
